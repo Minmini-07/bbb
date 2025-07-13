@@ -1,0 +1,175 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Welcome Page */
+.welcome-page {
+  background: url('background.jpg') center/cover no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  backdrop-filter: blur(3px);
+}
+
+.center-box {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30px 50px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  color: #fff;
+}
+
+.gift-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 15px 25px;
+  font-size: 18px;
+  color: #fff;
+  background: #ff69b4;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+  transition: all 0.3s ease;
+}
+
+.gift-button:hover {
+  background: #ff85c1;
+  transform: scale(1.05);
+}
+
+/* Surprise Page */
+.surprise-page {
+  background: url('background.jpg') center/cover no-repeat;
+  backdrop-filter: blur(8px);
+  min-height: 100vh;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 0;
+}
+
+.overlay {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.wish h1 {
+  font-size: 3em;
+  color: #fff;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 8px #000;
+}
+
+.wish p {
+  font-size: 1.5em;
+  color: #ffe6f0;
+}
+
+/* Photo Wall – Aesthetic scattered style */
+.photo-wall {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 40px;
+  position: relative;
+}
+
+.photo {
+  width: 180px;
+  height: 260px;
+  object-fit: cover;
+  border: 8px solid #fff;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  position: relative;
+  animation: fadeFloatIn 0.8s ease-out forwards;
+  animation-delay: calc(var(--i) * 0.4s);
+  transform: rotate(var(--angle)) scale(0.95);
+  transition: transform 0.4s ease;
+}
+
+.photo:nth-child(1) { --angle: -5deg; top: 10px; left: -10px; }
+.photo:nth-child(2) { --angle: 8deg; top: -5px; left: 15px; }
+.photo:nth-child(3) { --angle: -10deg; top: 0px; left: -15px; }
+.photo:nth-child(4) { --angle: 6deg; top: 12px; left: 8px; }
+.photo:nth-child(5) { --angle: -7deg; top: -8px; left: -5px; }
+
+.photo:hover {
+  transform: rotate(0deg) scale(1.05);
+  z-index: 10;
+}
+
+@keyframes fadeFloatIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9) rotate(var(--angle));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px) scale(0.95) rotate(var(--angle));
+  }
+}
+
+/* Typing effect without cursor */
+.typing-text {
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end) forwards;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Floating hearts */
+.hearts::before,
+.hearts::after {
+  content: "💖";
+  position: fixed;
+  font-size: 24px;
+  opacity: 0.6;
+  animation: floatHearts 10s linear infinite;
+  z-index: 1;
+}
+
+.hearts::before {
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.hearts::after {
+  left: 80%;
+  animation-delay: 5s;
+}
+
+@keyframes floatHearts {
+  0% {
+    bottom: -10%;
+    transform: translateX(0) scale(1);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    bottom: 120%;
+    transform: translateX(-30px) scale(1.4);
+    opacity: 0;
+  }
+}
