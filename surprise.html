@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Happy Birthday My Love</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="surprise-page">
+<body>
   <audio autoplay loop>
-    <source src="Naan-Nee.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
+    <source src="Naan-Nee.mp3" type="audio/mpeg" />
   </audio>
 
-  <div class="hearts"></div>
+  <div class="background"></div>
+  <div class="hearts-container"></div>
 
-  <div class="overlay">
-    <div class="wish">
-      <h1 class="typing-text">Happy Birthday Baby!!</h1>
-      <p>I love you 💕</p>
-    </div>
-
-    <div class="photo-wall">
-      <img src="photos/1.jpg" class="photo" style="--i:0;">
-      <img src="photos/2.jpg" class="photo" style="--i:1;">
-      <img src="photos/3.jpg" class="photo" style="--i:2;">
-      <img src="photos/4.jpg" class="photo" style="--i:3;">
-      <img src="photos/5.jpg" class="photo" style="--i:4;">
-    </div>
+  <div class="wish">
+    <h1 class="static-text">Happy Birthday Baby!!</h1>
+    <p>I love you 💕</p>
   </div>
+
+  <div class="photo-wall">
+    <img src="photos/1.jpg" class="photo" />
+    <img src="photos/2.jpg" class="photo" />
+    <img src="photos/3.jpg" class="photo" />
+    <img src="photos/4.jpg" class="photo" />
+    <img src="photos/5.jpg" class="photo" />
+  </div>
+
+  <script>
+    const heartsContainer = document.querySelector(".hearts-container");
+    for (let i = 0; i < 40; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDelay = Math.random() * 5 + "s";
+      heartsContainer.appendChild(heart);
+    }
+  </script>
 </body>
 </html>
