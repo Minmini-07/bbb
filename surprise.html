@@ -2,39 +2,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Happy Birthday My Love</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surprise</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="surprise">
   <audio autoplay loop>
-    <source src="Naan-Nee.mp3" type="audio/mpeg" />
+    <source src="Naan-Nee.mp3" type="audio/mp3" />
   </audio>
 
   <div class="background"></div>
   <div class="hearts-container"></div>
 
-  <div class="wish">
+  <div class="wish-text">
     <h1 class="static-text">Happy Birthday Baby!!</h1>
     <p>I love you 💕</p>
   </div>
 
-  <div class="photo-wall">
-    <img src="1.jpg" class="photo" />
-    <img src="2.jpg" class="photo" />
-    <img src="3.jpg" class="photo" />
-    <img src="4.jpg" class="photo" />
-    <img src="5.jpg" class="photo" />
+  <div class="photo-gallery">
+    <!-- 12 photos with data-caption attributes -->
+    <img src="1.jpg" class="photo" data-caption="My head fits perfectly right there every time 🥺💗" />
+    <img src="2.jpg" class="photo" data-caption="You looked so effortlessly cute here ☀️🫶" />
+    <img src="3.jpg" class="photo" data-caption="You hugged me like you’d never let go 🤍" />
+    <img src="4.jpg" class="photo" data-caption="Same us, just happier and even more in love 🥰" />
+    <img src="5.jpg" class="photo" data-caption="My favorite place: wrapped in you 🥺💕" />
+    <img src="6.jpg" class="photo" data-caption="One look, and everything else faded 💫" />
+    <img src="7.jpg" class="photo" data-caption="POV: I fell for the guy in this reflection 💘" />
+    <img src="8.jpg" class="photo" data-caption="No fancy moment — just real, warm love 🕯️" />
+    <img src="9.jpg" class="photo" data-caption="That little gap? Full of electricity ⚡💞" />
+    <img src="10.jpg" class="photo" data-caption="Not just a pose — a promise, softly held 🕊️" />
+    <img src="11.jpg" class="photo" data-caption="When you leaned on me like that… I melted a little 🥹💘" />
+    <img src="12.jpg" class="photo" data-caption="I could stare up at you forever — and still blush every time 😳💕" />
+  </div>
+
+  <!-- Lightbox for zoom-in and caption -->
+  <div class="lightbox" id="lightbox">
+    <span class="close" onclick="closeLightbox()">×</span>
+    <img class="lightbox-img" id="lightbox-img" />
+    <p class="caption" id="lightbox-caption"></p>
   </div>
 
   <script>
     const heartsContainer = document.querySelector(".hearts-container");
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 30; i++) {
       const heart = document.createElement("div");
       heart.className = "heart";
-      heart.textContent = "💖";
+      heart.textContent = "❤️";
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.animationDelay = Math.random() * 5 + "s";
       heartsContainer.appendChild(heart);
+    }
+
+    const photos = document.querySelectorAll('.photo');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    photos.forEach(photo => {
+      photo.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = photo.src;
+        lightboxCaption.textContent = photo.getAttribute('data-caption');
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
     }
   </script>
 </body>
